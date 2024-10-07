@@ -96,3 +96,28 @@ La commande pour se connecter à phpmyadmin est la suivante :
 | ------------- | ------------- |
 | Réponse | `select * from lpecom_examens inner join lpecom_etudiants where lpecom_examens.id_etudiant=lpecom_etudiants.id_etudiant order by note desc limit 3;` |
 | - | <p align="center"><img src="./img/exo17.png" /></p> |
+
+| Ex.18 | Quel est le résultat de la requête ci-dessous ? |
+| ------------- | ------------- |
+| - | `SELECT id, prenom, nom  
+FROM lpecom_realisateurs  
+WHERE nation = "us"  
+AND sexe = 1;` |
+| - | <p align="center"><img src="./img/exo18.png" /></p> |
+
+| Ex.19 | Quel est le résultat de la requête ci-dessous ? |
+| ------------- | ------------- |
+| - | `SELECT *  
+FROM lpecom_realisateurs  
+WHERE sexe = "0"  
+ORDER BY nom DESC  
+LIMIT 1;` |
+| - | <p align="center"><img src="./img/exo19.png" /></p> |
+
+| Ex.20 | Quel est le résultat de la requête ci-dessous ? |
+| ------------- | ------------- |
+| - | `SELECT f.id, f.nom AS film, r.prenom, r.nom  
+FROM lpecom_films f  
+INNER JOIN lpecom_realisateurs r ON f.id_realisateur = r.id  
+ORDER BY f.id ASC;` |
+| - | <p align="center"><img src="./img/exo20.png" /></p> |
