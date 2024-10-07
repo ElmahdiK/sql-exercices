@@ -4,6 +4,9 @@ Exercices sur SQL
 | Ex.1  | Quelle requête utiliser pour afficher l'ensemble des enregistrements de la table lpecom_livres ? |
 | ------------- | ------------- |
 | Réponse |  select * from lpecom_livres;  |
+<p align="center">
+<img src="./img/exo1.png" />
+</p>
 
 | Ex.2  | Quelle requête utiliser pour sélectionner uniquement les livres qui ont un prix strictement supérieur à 20 dans la table lpecom_livres ? |
 | ------------- | ------------- |
