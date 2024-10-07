@@ -91,3 +91,34 @@ Exercices sur SQL
 <p align="center">
 <img src="./img/exo13.png" />
 </p>
+
+
+| Ex.14  | Quelle requête utiliser pour afficher tous les enregistrements de la table lpecom_examens avec en plus, si c'est possible, le prénom et le nom de l'étudiant ? |
+| ------------- | ------------- |
+| Réponse |  select * from lpecom_examens inner join lpecom_etudiants on lpecom_examens.id_etudiant=lpecom_etudiants.id_etudiant;  |
+<p align="center">
+<img src="./img/exo14.png" />
+</p>
+
+
+| Ex.15  | Quelle requête utiliser pour afficher les enregistrements de la table lpecom_examens avec le prénom et le nom de l'étudiant, uniquement quand les étudiants sont présents dans la table lpecom_etudiants ? |
+| ------------- | ------------- |
+| Réponse | select * from lpecom_examens inner join lpecom_etudiants where lpecom_examens.id_etudiant=lpecom_etudiants.id_etudiant;  |
+<p align="center">
+<img src="./img/exo15.png" />
+</p>
+
+| Ex.16  | Quelle requête utiliser pour afficher uniquement le nom et le prénom de l'étudiant avec l'id : 30 avec la moyenne de ses deux examens dans une colonne moyenne ? |
+| ------------- | ------------- |
+| Réponse |  select nom, prenom, avg(note) as moyenne from lpecom_examens inner join lpecom_etudiants where lpecom_examens.id_etudiant=30;  |
+<p align="center">
+<img src="./img/exo16.png" />
+</p>
+
+
+| Ex.17  | Quelle requête utiliser pour afficher les 3 meilleurs examens, du meilleur au moins bon, avec le prénom et le nom de l'étudiant associé ? |
+| ------------- | ------------- |
+| Réponse |  select * from lpecom_examens inner join lpecom_etudiants where lpecom_examens.id_etudiant=lpecom_etudiants.id_etudiant order by note desc limit 3;  |
+<p align="center">
+<img src="./img/exo17.png" />
+</p>
