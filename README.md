@@ -1,3 +1,8 @@
+<p align="center">
+<img src="./img/screenshot.png" />
+</p>
+
+
 # sql-exercices
 Exercices sur SQL
 
