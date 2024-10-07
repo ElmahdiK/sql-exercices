@@ -2,13 +2,19 @@
 <img src="./img/screenshot.png" />
 </p>
 
-
 # sql-exercices
-Exercices sur SQL
+Ce repo contient les exercices SQL effectués lors de la formation POEC Java Sophia du 16/09 au 05/12/2024.  
+L'ensemble des requêtes ont été exécutées sur le shell de XAMPP sous Windows.
+
+# Connexion à phpmyadmin
+La commande pour se connecter à phpmyadmin est la suivante :  
+`mysql -h localhost -u root -p lpecom_db`
+
+# Exercices
 
 | Ex.1  | Quelle requête utiliser pour afficher l'ensemble des enregistrements de la table lpecom_livres ? |
 | ------------- | ------------- |
-| Réponse |  select * from lpecom_livres;  |
+| Réponse |  `select * from lpecom_livres;`  |
 <p align="center">
 <img src="./img/exo1.png" />
 </p>
