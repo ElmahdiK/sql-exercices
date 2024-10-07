@@ -99,25 +99,40 @@ La commande pour se connecter à phpmyadmin est la suivante :
 
 | Ex.18 | Quel est le résultat de la requête ci-dessous ? |
 | ------------- | ------------- |
-| - | `SELECT id, prenom, nom  
-FROM lpecom_realisateurs  
-WHERE nation = "us"  
-AND sexe = 1;` |
+| - | `SELECT id, prenom, nom FROM lpecom_realisateurs WHERE nation = "us" AND sexe = 1;` |
 | - | <p align="center"><img src="./img/exo18.png" /></p> |
 
 | Ex.19 | Quel est le résultat de la requête ci-dessous ? |
 | ------------- | ------------- |
-| - | `SELECT *  
-FROM lpecom_realisateurs  
-WHERE sexe = "0"  
-ORDER BY nom DESC  
-LIMIT 1;` |
+| - | `SELECT * FROM lpecom_realisateurs WHERE sexe = "0" ORDER BY nom DESC LIMIT 1;` |
 | - | <p align="center"><img src="./img/exo19.png" /></p> |
 
 | Ex.20 | Quel est le résultat de la requête ci-dessous ? |
 | ------------- | ------------- |
-| - | `SELECT f.id, f.nom AS film, r.prenom, r.nom  
-FROM lpecom_films f  
-INNER JOIN lpecom_realisateurs r ON f.id_realisateur = r.id  
-ORDER BY f.id ASC;` |
+| - | `SELECT f.id, f.nom AS film, r.prenom, r.nom FROM lpecom_films f INNER JOIN lpecom_realisateurs r ON f.id_realisateur = r.id   ORDER BY f.id ASC;` |
 | - | <p align="center"><img src="./img/exo20.png" /></p> |
+
+| Ex.21 | Quel est le résultat de la requête ci-dessous ? |
+| ------------- | ------------- |
+| - | `SELECT f.id, f.nom AS film, r.prenom, r.nom FROM lpecom_films f LEFT JOIN lpecom_realisateurs r ON f.id_realisateur = r.id ORDER BY f.id ASC;` |
+| - | <p align="center"><img src="./img/exo21.png" /></p> |
+
+| Ex.22 | Quel est le résultat de la requête ci-dessous ? |
+| ------------- | ------------- |
+| - | `SELECT f.id, f.nom, fn.note FROM lpecom_films f LEFT JOIN lpecom_films_notes fn ON f.id = fn.id_film ORDER BY f.id ASC;` |
+| - | <p align="center"><img src="./img/exo22.png" /></p> |
+
+| Ex.23 | Quel est le résultat de la requête ci-dessous ? |
+| ------------- | ------------- |
+| - | `SELECT f.nom, r.prenom AS realisateur_prenom, r.nom AS realisateur_nom, AVG(fn.note) AS moyenne_note FROM lpecom_films f INNER JOIN lpecom_realisateurs r ON f.id_realisateur = r.id INNER JOIN lpecom_films_notes fn ON f.id = fn.id_film WHERE f.id = 546` |
+| - | <p align="center"><img src="./img/exo23.png" /></p> |
+
+| Ex.24 | Quel est le résultat de la requête ci-dessous ? |
+| ------------- | ------------- |
+| - | `SELECT r.nation, AVG(fn.note) AS moyenne_note FROM lpecom_films f INNER JOIN lpecom_realisateurs r ON f.id_realisateur = r.id INNER JOIN lpecom_films_notes fn ON f.id = fn.id_film WHERE r.nation = 'us';` |
+| - | <p align="center"><img src="./img/exo24.png" /></p> |
+
+| Ex.25 | Quel est le résultat de la requête ci-dessous ? |
+| ------------- | ------------- |
+| - | `SELECT r.nation, MAX(fn.note) AS max_note FROM lpecom_films f INNER JOIN lpecom_realisateurs r ON f.id_realisateur = r.id INNER JOIN lpecom_films_notes fn ON f.id = fn.id_film WHERE r.nation = 'uk';` |
+| - | <p align="center"><img src="./img/exo25.png" /></p> |
