@@ -312,3 +312,11 @@ Renommer la colonne de résultat avec avg_moderna. |
 | ------------- | ------------- |
 | Réponse | `select DISTINCT ld.name from lpecom_covid_vaccin v, lpecom_covid_vaccin_type lct, lpecom_departments ld where lct.id=v.vaccin and v.dep_code=ld.code and ((lct.nom='Moderna') and (v.n_cum_dose2>9000) or (lct.nom='COMIRNATY Pfizer/BioNTech') and (v.n_cum_dose1>12000));` |
 | - | <p align="center"><img src="./assets/img/exo56.png" /></p> |
+
+| Ex.57 | Quelle requête SQL utiliser pour compter, sans doublons, le nombre de professionnels de santé en Seine-et-Marne (77) ? |
+| ------------- | ------------- |
+| Réponse | `select DISTINCT (id) from lpecom_rpps where code_postal=7000;` |
+
+| Ex.58 | Quelle requête SQL utiliser pour afficher pour tous les professionnels de santé avec le code postal 77300 les colonnes suivantes : id_pp_nat, prenom, nom, code_postal, ville, departement et région. Vous aurez besoin de plusieurs jointures. |
+| ------------- | ------------- |
+| Réponse | `select * from lpecom_rpps where code_postal=77300;` |
