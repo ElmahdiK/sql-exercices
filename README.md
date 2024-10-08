@@ -136,3 +136,28 @@ La commande pour se connecter à phpmyadmin est la suivante :
 | ------------- | ------------- |
 | Réponse | `SELECT r.nation, MAX(fn.note) AS max_note FROM lpecom_films f INNER JOIN lpecom_realisateurs r ON f.id_realisateur = r.id INNER JOIN lpecom_films_notes fn ON f.id = fn.id_film WHERE r.nation = 'uk';` |
 | - | <p align="center"><img src="./img/exo25.png" /></p> |
+
+| Ex.26 | Quelle requête utiliser pour retrouver la ville qui possède les coordonnées GPS suivantes : 48.66913724637683, 1.87586057971015 ? |
+| ------------- | ------------- |
+| Réponse | `select name, gps_lat, gps_lng from lpecom_cities where gps_lat=48.66913724637683 and gps_lng=1.87586057971015;` |
+| - | <p align="center"><img src="./img/exo26.png" /></p> |
+
+| Ex.27 | Sans jointure, quelle requête utiliser pour calculer le nombre de villes que compte le département de l'Essonne ? |
+| ------------- | ------------- |
+| Réponse | `select count(lc.name) as nbVilleEssone from lpecom_departments ld, lpecom_cities lc where ld.name=’Essonne’ and (lc.department_code=ld.code);` |
+| - | <p align="center"><img src="./img/exo27.png" /></p> |
+
+| Ex.28 | Sans jointure, quelle requête utiliser pour calculer le nombre de villes en Île-de-France se terminant par '-le-Roi' ? |
+| ------------- | ------------- |
+| Réponse | `select count(*) from lpecom_cities lc, lpecom_departments ld, lpecom_regions lr where (lr.name='Île-de-France') and (lr.code=ld.region_code) and (ld.code=lc.department_code) and (lc.name like '%-le-Roi');` |
+| - | <p align="center"><img src="./img/exo28.png" /></p> |
+
+| Ex.29 | Combien de villes possèdent le code postal (zip_code) 77320 ? Renommez la colonne de résultat n_cities. |
+| ------------- | ------------- |
+| Réponse | `select count(name) as n_cities from lpecom_cities where zip_code=77320;` |
+| - | <p align="center"><img src="./img/exo29.png" /></p> |
+
+| Ex.30 | Sans jointure, quelle requête utiliser pour calculer le nombre de villes commençant par 'Saint-' en Seine-et-Marne ? |
+| ------------- | ------------- |
+| Réponse | `select count(*) from lpecom_cities lc, lpecom_departments ld where (lc.name like 'Saint-%' and ld.name='Seine-et-Marne') and (lc.department_code=ld.code);` |
+| - | <p align="center"><img src="./img/exo30.png" /></p> |
