@@ -245,3 +245,23 @@ Vous aurez besoin du résultat de la première requête pour la deuxième. |
 | Réponse | `select * from lpecom_covid lc, lpecom_regions lr where lc.id_region=lr.code and  lc.couv_dose2 > 5;` |
 | - | <p align="center"><img src="./assets/img/exo46.png" /></p> |
 | - | <p align="center"><img src="./assets/img/exo46b.png" /></p> |
+
+| Ex.47 | Sans jointure, quelle requête SQL utiliser pour afficher toutes les données de vaccination du 14 février 2021 uniquement, pour le département de Seine-et-Marne (77) ? |
+| ------------- | ------------- |
+| Réponse | `select * from lpecom_covid lcd, lpecom_departments ld where ld.name='Seine-et-Marne' and lcd.jour='2021-02-14';` |
+| - | <p align="center"><img src="./assets/img/exo47.png" /></p> |
+
+| Ex.48 | Sans jointure, quelle requête SQL utiliser pour afficher le cumul de toutes les données de vaccination pour tous les vaccins du 14 février 2021 uniquement, pour les départements de l'Essonne (91) et de la Seine-et-Marne (77) ? |
+| ------------- | ------------- |
+| Réponse | `select * from lpecom_covid lcd, lpecom_departments ld where (ld.name='Seine-et-Marne' or ld.name='Essonne') and lcd.jour='2021-02-14';` |
+| - | <p align="center"><img src="./assets/img/exo48.png" /></p> |
+
+| Ex.49 | Sans jointure, quelle requête utiliser pour afficher la somme des vaccinations première dose réalisées uniquement avec le vaccin AstraZeneka pour le mois de février 2021 pour le département de la Seine-et-Marne (77) ? |
+| ------------- | ------------- |
+| Réponse | `SELECT SUM(v.n_dose1) FROM lpecom_covid_vaccin v WHERE v.dep_code = 77 AND v.jour BETWEEN '2021-02-01' AND '2021-02-31' AND v.vaccin = 3;` |
+| - | <p align="center"><img src="./assets/img/exo49.png" /></p> |
+
+| Ex.50 | Sans jointure, quelle requête utiliser pour afficher la somme des vaccinations deuxième dose réalisées avec le vaccin AstraZeneka ou Moderna pour le mois de mars 2021 pour le département de la Seine-et-Marne (77) ? |
+| ------------- | ------------- |
+| Réponse | `select sum(v.n_dose2) from lpecom_covid_vaccin v where v.dep_code = 77 and (v.jour between '2021-03-01' and '2021-03-31') and (v.vaccin = 3 or v.vaccin = 2);` |
+| - | <p align="center"><img src="./assets/img/exo50.png" /></p> |
