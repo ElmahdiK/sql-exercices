@@ -186,3 +186,28 @@ La commande pour se connecter à phpmyadmin est la suivante :
 | ------------- | ------------- |
 | Réponse | `select lr.name, ld.name, lc.name from lpecom_departments ld, lpecom_regions lr, lpecom_cities lc where (lc.department_code=ld.code) and (ld.region_code=lr.code) and ld.code=‘77’;` |
 | - | <p align="center"><img src="./assets/img/exo35.png" /></p> |
+
+| Ex.36 | Quelle requête utiliser pour afficher toutes les données de vaccination uniquement pour le 1er avril 2021 ? |
+| ------------- | ------------- |
+| Réponse | `select * from lpecom_covid lc where lc.jour=’2021-04-01’;` |
+| - | <p align="center"><img src="./assets/img/exo36.png" /></p> |
+
+| Ex.37 | Quelle requête utiliser pour afficher toutes les données de vaccination uniquement pour le 1er avril 2021 avec le nom de la région concernée ? |
+| ------------- | ------------- |
+| Réponse | `select * from lpecom_covid lc, lpecom_regions lr where lr.code=lc.id_region and lc.jour=’2021-04-01’;` |
+| - | <p align="center"><img src="./assets/img/exo37.png" /></p> |
+
+| Ex.38 | Quelle requête utiliser pour afficher le nombre au cumulé de vaccination première dose toutes régions en 2020 ? Proposez également une solution pour les vaccination deuxième dose. |
+| ------------- | ------------- |
+| Réponse | `select sum(lc.n_dose1), sum(lc.n_dose2) from lpecom_covid lc where lc.jour >= ‘2020-01-01’ and lc.jour <= ‘2020-12-31’;` |
+| - | <p align="center"><img src="./assets/img/exo38.png" /></p> |
+
+| Ex.39 | Quelle requête SQL utiliser pour afficher le nombre au cumulé de vaccination première dose pour la région avec le code 93 uniquement pour le mois de mars 2021 ? |
+| ------------- | ------------- |
+| Réponse | `select sum(lc.n_dose1) from lpecom_covid lc where lc.id_region=93 and lc.jour >= ‘2021-03-01’ and lc.jour <= ‘2021-03-31’;` |
+| - | <p align="center"><img src="./assets/img/exo39.png" /></p> |
+
+| Ex.40 | Quelle requête utiliser pour afficher le nombre au cumulé de vaccination deuxième dose pour la région avec le code 11 uniquement pour le mois de mars 2021 ? ? |
+| ------------- | ------------- |
+| Réponse | `select sum(lc.n_dose2) from lpecom_covid lc where lc.id_region=11 and lc.jour >= ‘2021-03-01’ and lc.jour <= ‘2021-03-31’;` |
+| - | <p align="center"><img src="./assets/img/exo40.png" /></p> |
