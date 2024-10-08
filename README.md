@@ -265,3 +265,50 @@ Vous aurez besoin du résultat de la première requête pour la deuxième. |
 | ------------- | ------------- |
 | Réponse | `select sum(v.n_dose2) from lpecom_covid_vaccin v where v.dep_code = 77 and (v.jour between '2021-03-01' and '2021-03-31') and (v.vaccin = 3 or v.vaccin = 2);` |
 | - | <p align="center"><img src="./assets/img/exo50.png" /></p> |
+
+| Ex.51 | Sans jointure, quelle requête utiliser pour afficher le record de vaccination première dose avec un type de vaccin en une seule journée ?  
+Avec une deuxième requête qui exploitera une jointure, afficher toutes les informations possibles pour cette journée record et sur le type de vaccin. |
+| ------------- | ------------- |
+| Réponse | `select max(v.n_dose1), vt.nom, jour from lpecom_covid_vaccin v, lpecom_covid_vaccin_type vt where v.vaccin=0;` |
+| - | <p align="center"><img src="./assets/img/exo51.png" /></p> |
+
+| Ex.52 | Sans jointure, quelle requête utiliser pour afficher le record de vaccination deuxième dose avec un type de vaccin en une seule journée ?
+Avec une deuxième requête qui exploitera deux jointures, afficher toutes les informations possibles pour cette journée record, sur le type de vaccin et sur le département. |
+| ------------- | ------------- |
+| Réponse | `select max(v.n_dose2), vt.nom, jour from lpecom_covid_vaccin v, lpecom_covid_vaccin_type vt where v.vaccin=0;` |
+| - | <p align="center"><img src="./assets/img/exo52.png" /></p> |
+
+| Ex.53 | Quelle requête permet de savoir quel département possède le plus grand nombre d'injections première dose pour le vaccin AstraZeneka ?  
+Avec une deuxième requête, afficher uniquement les colonnes suivantes :  
+- le nom du vaccin ;  
+- le jour ;  
+- le nom et le code du département ;  
+- le nombre cumulé d'injections. |
+| ------------- | ------------- |
+| Réponse | `select ld.name, dep_code, max(v.n_dose1) from lpecom_covid_vaccin v, lpecom_covid_vaccin_type lct, lpecom_departments ld where lct.nom=’AstraZeneka’ and lct.id=v.vaccin and v.dep_code=ld.code;` |
+| Réponse | `select lct.nom, v.jour, ld.name, dep_code, n_cum_dose1 from lpecom_covid_vaccin v, lpecom_covid_vaccin_type lct, lpecom_departments ld where lct.nom=’AstraZeneka’ and lct.id=v.vaccin and v.dep_code=ld.code;` |
+| - | <p align="center"><img src="./assets/img/exo53.png" /></p> |
+| - | <p align="center"><img src="./assets/img/exo53b.png" /></p> |
+
+| Ex.54 | Quelle requête permet de savoir quel département a eu le moins de vaccinations première dose avec le vaccin COMIRNATY Pfizer/BioNTech ?  
+Avec une deuxième requête, afficher uniquement les colonnes suivantes :  
+- le nom du vaccin ;  
+- le jour ;  
+- le nom et le code du département ;  
+- le nombre cumulé d'injections. |
+| ------------- | ------------- |
+| Réponse | `select ld.name, dep_code, min(v.n_dose1) from lpecom_covid_vaccin v, lpecom_covid_vaccin_type lct, lpecom_departments ld where lct.nom=’COMIRNATY Pfizer/BioNTech’ and lct.id=v.vaccin and v.dep_code=ld.code;` |
+| Réponse | `select lct.nom, v.jour, ld.name, dep_code, n_cum_dose1 from lpecom_covid_vaccin v, lpecom_covid_vaccin_type lct, lpecom_departments ld where lct.nom=’COMIRNATY Pfizer/BioNTech’ and lct.id=v.vaccin and v.dep_code=ld.code;` |
+| - | <p align="center"><img src="./assets/img/exo54.png" /></p> |
+| - | <p align="center"><img src="./assets/img/exo54b.png" /></p> |
+
+| Ex.55 | Quelle requête permet de connaître la moyenne de vaccinations première dose dans tous les départements pour le vaccin Moderna ?  
+Renommer la colonne de résultat avec avg_moderna. |
+| ------------- | ------------- |
+| Réponse | `select avg(v.n_dose1) as avg_moderna from lpecom_covid_vaccin v, lpecom_covid_vaccin_type lct, lpecom_departments ld where lct.nom=’Moderna’ and lct.id=v.vaccin and v.dep_code=ld.code;` |
+| - | <p align="center"><img src="./assets/img/exo55.png" /></p> |
+
+| Ex.56 | Quelle requête utiliser pour afficher les départements (avec leur nom) qui possèdent un nombre d'injections deuxième dose avec le vaccin Moderna supérieur à 9000 ou un nombre d'injections première dose avec le vaccin COMIRNATY Pfizer/BioNTech supérieur à 120000 ? Vous aurez besoin de deux jointures. |
+| ------------- | ------------- |
+| Réponse | `select DISTINCT ld.name from lpecom_covid_vaccin v, lpecom_covid_vaccin_type lct, lpecom_departments ld where lct.id=v.vaccin and v.dep_code=ld.code and ((lct.nom='Moderna') and (v.n_cum_dose2>9000) or (lct.nom='COMIRNATY Pfizer/BioNTech') and (v.n_cum_dose1>12000));` |
+| - | <p align="center"><img src="./assets/img/exo56.png" /></p> |
