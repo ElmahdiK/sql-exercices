@@ -211,3 +211,37 @@ La commande pour se connecter à phpmyadmin est la suivante :
 | ------------- | ------------- |
 | Réponse | `select sum(lc.n_dose2) from lpecom_covid lc where lc.id_region=11 and lc.jour >= ‘2021-03-01’ and lc.jour <= ‘2021-03-31’;` |
 | - | <p align="center"><img src="./assets/img/exo40.png" /></p> |
+
+| Ex.41 | Quelle requête SQL utiliser pour afficher le record de vaccination première dose en une seule journée ? Avec une deuxième requête, afficher les informations de la région concernée, dont son nom, ainsi que le jour du record. |
+| ------------- | ------------- |
+| Réponse | `select max(lc.n_cum_dose1), lr.name, lc.jour from lpecom_covid lc, lpecom_regions lr where lc.id_region=lr.code;` |
+| - | <p align="center"><img src="./assets/img/exo41.png" /></p> |
+
+| Ex.42 | Quelle requête utiliser pour afficher le record de vaccination deuxième dose en une seule journée ? Avec une deuxième requête, afficher les informations de la région concernée, dont son nom, ainsi que le jour du record. |
+| ------------- | ------------- |
+| Réponse | `seselect max(lc.n_cum_dose2), lr.name, lc.jour from lpecom_covid lc, lpecom_regions lr where lc.id_region=lr.code;` |
+| - | <p align="center"><img src="./assets/img/exo42.png" /></p> |
+
+| Ex.43 | Quelles requêtes permettent de connaitre quelle région possède la plus grande couverture de vaccination avec une dose et deux doses ?  
+Vous aurez besoin de 4 requêtes pour répondre aux deux questions.  
+Vous aurez besoin du résultat de la première requête pour la deuxième. |
+| ------------- | ------------- |
+| Réponse | `select max(lc.couv_dose1), lr.name from lpecom_covid lc, lpecom_regions lr where lc.id_region=lr.code;` |
+| - | <p align="center"><img src="./assets/img/exo43.png" /></p> |
+
+| Ex.44 | Quelle requête utiliser pour afficher le nom de la région qui a le plus faible taux de couverture de vaccination avec une dose ? Vous aurez besoin de 2 requêtes pour répondre à la question. |
+| ------------- | ------------- |
+| Réponse | `select min(lc.couv_dose1), lr.name from lpecom_covid lc, lpecom_regions lr where lc.id_region=lr.code;` |
+| - | <p align="center"><img src="./assets/img/exo44.png" /></p> |
+
+| Ex.45 | Quelle requête utiliser pour calculer la couverture moyenne entre les différentes régions à la date la plus récente, pour les vaccinations une et deux doses ? Vous renommez les colonnes de résultats : couverture_dose1_avg et couverture_dose2_avg. |
+| ------------- | ------------- |
+| Réponse | `select avg(lc.couv_dose1) as couverture_dose1_avg, avg(lc.couv_dose2) as couverture_dose2_avg from lpecom_covid lc, lpecom_regions lr where lc.id_region=lr.code order by lc.jour desc;` |
+| - | <p align="center"><img src="./assets/img/exo45.png" /></p> |
+
+| Ex.46 | Quelle requête utiliser pour afficher les données de vaccination des régions (avec leur nom) qui possèdent une couveture vaccinale supérieure à 15 % pour la première dose et supérieure à 5 % pour la deuxième dose ? |
+| ------------- | ------------- |
+| Réponse | `select * from lpecom_covid lc, lpecom_regions lr where lc.id_region=lr.code and  lc.couv_dose1 > 15;` |
+| Réponse | `select * from lpecom_covid lc, lpecom_regions lr where lc.id_region=lr.code and  lc.couv_dose2 > 5;` |
+| - | <p align="center"><img src="./assets/img/exo46.png" /></p> |
+| - | <p align="center"><img src="./assets/img/exo46b.png" /></p> |
