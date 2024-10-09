@@ -222,9 +222,7 @@ La commande pour se connecter à phpmyadmin est la suivante :
 | Réponse | `seselect max(lc.n_cum_dose2), lr.name, lc.jour from lpecom_covid lc, lpecom_regions lr where lc.id_region=lr.code;` |
 | - | <p align="center"><img src="./assets/img/exo42.png" /></p> |
 
-| Ex.43 | Quelles requêtes permettent de connaitre quelle région possède la plus grande couverture de vaccination avec une dose et deux doses ?  
-Vous aurez besoin de 4 requêtes pour répondre aux deux questions.  
-Vous aurez besoin du résultat de la première requête pour la deuxième. |
+| Ex.43 | Quelles requêtes permettent de connaitre quelle région possède la plus grande couverture de vaccination avec une dose et deux doses ?  Vous aurez besoin de 4 requêtes pour répondre aux deux questions.  Vous aurez besoin du résultat de la première requête pour la deuxième. |
 | ------------- | ------------- |
 | Réponse | `select max(lc.couv_dose1), lr.name from lpecom_covid lc, lpecom_regions lr where lc.id_region=lr.code;` |
 | - | <p align="center"><img src="./assets/img/exo43.png" /></p> |
