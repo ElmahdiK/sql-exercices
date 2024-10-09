@@ -283,17 +283,14 @@ Vous aurez besoin du résultat de la première requête pour la deuxième. |
 | - | <p align="center"><img src="./assets/img/exo53.png" /></p> |
 | - | <p align="center"><img src="./assets/img/exo53b.png" /></p> |
 
-| Ex.54 | Quelle requête permet de savoir quel département a eu le moins de vaccinations première dose avec le vaccin COMIRNATY Pfizer/BioNTech ?  
-Avec une deuxième requête, afficher uniquement les colonnes suivantes :  - le nom du vaccin ;  - le jour ;  - le nom et le code du département ; 
-- le nombre cumulé d'injections. |
+| Ex.54 | Quelle requête permet de savoir quel département a eu le moins de vaccinations première dose avec le vaccin COMIRNATY Pfizer/BioNTech ?  Avec une deuxième requête, afficher uniquement les colonnes suivantes :  - le nom du vaccin ;  - le jour ;  - le nom et le code du département ; - le nombre cumulé d'injections. |
 | ------------- | ------------- |
 | Réponse | `select ld.name, dep_code, min(v.n_dose1) from lpecom_covid_vaccin v, lpecom_covid_vaccin_type lct, lpecom_departments ld where lct.nom=’COMIRNATY Pfizer/BioNTech’ and lct.id=v.vaccin and v.dep_code=ld.code;` |
 | Réponse | `select lct.nom, v.jour, ld.name, dep_code, n_cum_dose1 from lpecom_covid_vaccin v, lpecom_covid_vaccin_type lct, lpecom_departments ld where lct.nom=’COMIRNATY Pfizer/BioNTech’ and lct.id=v.vaccin and v.dep_code=ld.code;` |
 | - | <p align="center"><img src="./assets/img/exo54.png" /></p> |
 | - | <p align="center"><img src="./assets/img/exo54b.png" /></p> |
 
-| Ex.55 | Quelle requête permet de connaître la moyenne de vaccinations première dose dans tous les départements pour le vaccin Moderna ?  
-Renommer la colonne de résultat avec avg_moderna. |
+| Ex.55 | Quelle requête permet de connaître la moyenne de vaccinations première dose dans tous les départements pour le vaccin Moderna ?  Renommer la colonne de résultat avec avg_moderna. |
 | ------------- | ------------- |
 | Réponse | `select avg(v.n_dose1) as avg_moderna from lpecom_covid_vaccin v, lpecom_covid_vaccin_type lct, lpecom_departments ld where lct.nom=’Moderna’ and lct.id=v.vaccin and v.dep_code=ld.code;` |
 | - | <p align="center"><img src="./assets/img/exo55.png" /></p> |
